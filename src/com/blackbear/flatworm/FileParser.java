@@ -168,6 +168,7 @@ public class FileParser {
         doExceptionCallback(ex, "FlatwormInvalidRecordException", ff.getLastLine());
       }
       catch (FlatwormInputLineLengthException ex) {
+        log.warn("Exception", ex);
         doExceptionCallback(ex, "FlatwormInputLineLengthException", ff.getLastLine());
       }
       catch (FlatwormUnsetFieldValueException ex) {

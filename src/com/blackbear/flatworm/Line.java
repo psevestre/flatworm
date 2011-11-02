@@ -113,8 +113,11 @@ class Line {
 
     // JBL - check for delimited status
     if (isDelimeted()) {
-      parseInputDelimited(inputLine);
-      return;
+      // Don't parse empty lines
+      if (inputLine != null && !inputLine.isEmpty()) {
+        parseInputDelimited(inputLine);
+        return;
+      }
     }
 
     int charPos = 0;
@@ -268,8 +271,10 @@ class Line {
           ++currentField;
         }
         catch (ArrayIndexOutOfBoundsException ex) {
-          log.error("Ran out of data on field " + i);
-          throw new FlatwormInputLineLengthException("No data available for record-element " + i);
+          log.warn("Ran out of data on field " + i);
+          // throw new
+          // FlatwormInputLineLengthException("No data available for record-element "
+          // + i);
         }
       }
       else if (le instanceof SegmentElement) {
