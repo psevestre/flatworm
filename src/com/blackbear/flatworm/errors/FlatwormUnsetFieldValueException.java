@@ -15,14 +15,13 @@
 package com.blackbear.flatworm.errors;
 
 /**
- * Exception thrown if code attempts to access the start, end or length of a field if it is not set.
+ * Exception thrown if code attempts to access the start, end or length of a
+ * field if it is not set.
  */
 
-public class FlatwormUnsetFieldValueException extends FlatwormException
-{
+public class FlatwormUnsetFieldValueException extends FlatwormException {
 
-    public FlatwormUnsetFieldValueException(String s)
-    {
-        super(s);
-    }
+  public FlatwormUnsetFieldValueException(String s) {
+    super(s);
+  }
 }

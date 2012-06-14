@@ -1,6 +1,5 @@
 package domain.segment;
 
-public class Identity
-{
+public class Identity {
 
 }

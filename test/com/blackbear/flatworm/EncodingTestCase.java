@@ -33,85 +33,73 @@ import com.blackbear.flatworm.errors.FlatwormUnsetFieldValueException;
 
 import domain.Film;
 
-public class EncodingTestCase extends TestCase
-{
-    protected FileFormat ff;
+public class EncodingTestCase extends TestCase {
+  protected FileFormat ff;
 
-    protected BufferedReader reader;
+  protected BufferedReader reader;
 
-    private static String layout = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
-            + "<file-format encoding=\"iso-8859-2\">\r\n"
-            + "    <converter name=\"char\" class=\"com.blackbear.flatworm.converters.CoreConverters\" method=\"convertChar\"\r\n"
-            + "        return-type=\"java.lang.String\" />\r\n" 
-            + "    <record name=\"dvd\">\r\n"
-            + "       <record-ident>\r\n" 
-            + "           <length-ident minlength=\"0\" maxlength=\"9999\" />\r\n"
-            + "       </record-ident>\r\n" 
-            + "       <record-definition>\r\n"
-            + "           <bean name=\"film\" class=\"domain.Film\" />\r\n" 
-            + "           <line>\r\n"
-            + "               <record-element length=\"30\" beanref=\"film.title\"\r\n"
-            + "                   type=\"char\">\r\n"
-            + "                   <conversion-option name=\"justify\" value=\"left\" />\r\n"
-            + "               </record-element>\r\n" 
-            + "           </line>\r\n" 
-            + "       </record-definition>\r\n"
-            + "   </record>\r\n" 
-            + "</file-format>";
+  private static String layout = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
+      + "<file-format encoding=\"iso-8859-2\">\r\n"
+      + "    <converter name=\"char\" class=\"com.blackbear.flatworm.converters.CoreConverters\" method=\"convertChar\"\r\n"
+      + "        return-type=\"java.lang.String\" />\r\n" + "    <record name=\"dvd\">\r\n"
+      + "       <record-ident>\r\n"
+      + "           <length-ident minlength=\"0\" maxlength=\"9999\" />\r\n"
+      + "       </record-ident>\r\n" + "       <record-definition>\r\n"
+      + "           <bean name=\"film\" class=\"domain.Film\" />\r\n" + "           <line>\r\n"
+      + "               <record-element length=\"30\" beanref=\"film.title\"\r\n"
+      + "                   type=\"char\">\r\n"
+      + "                   <conversion-option name=\"justify\" value=\"left\" />\r\n"
+      + "               </record-element>\r\n" + "           </line>\r\n"
+      + "       </record-definition>\r\n" + "   </record>\r\n" + "</file-format>";
 
-    public EncodingTestCase(String name)
-    {
-        super(name);
-    }
+  public EncodingTestCase(String name) {
+    super(name);
+  }
 
-    protected void setContent(byte[] content) throws Exception
-    {
-        ConfigurationReader parser = new ConfigurationReader();
-        ff = getFileFormat(parser);
-        reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(content), ff.getEncoding()));
-    }
+  protected void setContent(byte[] content) throws Exception {
+    ConfigurationReader parser = new ConfigurationReader();
+    ff = getFileFormat(parser);
+    reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(content),
+        ff.getEncoding()));
+  }
 
-    protected FileFormat getFileFormat(ConfigurationReader parser) throws Exception
-    {
-        InputStream is = new ByteArrayInputStream(layout.getBytes());
-        return parser.loadConfigurationFile(is);
-    }
+  protected FileFormat getFileFormat(ConfigurationReader parser) throws Exception {
+    InputStream is = new ByteArrayInputStream(layout.getBytes());
+    return parser.loadConfigurationFile(is);
+  }
 
-    protected Object getNextBean() throws FlatwormInvalidRecordException, FlatwormInputLineLengthException,
-            FlatwormConversionException, FlatwormUnsetFieldValueException, FlatwormCreatorException
-    {
-        MatchedRecord results = ff.getNextRecord(reader);
-        return results.getBean(getBeanName());
-    }
+  protected Object getNextBean() throws FlatwormInvalidRecordException,
+      FlatwormInputLineLengthException, FlatwormConversionException,
+      FlatwormUnsetFieldValueException, FlatwormCreatorException {
+    MatchedRecord results = ff.getNextRecord(reader);
+    return results.getBean(getBeanName());
+  }
 
-    protected String getBeanName()
-    {
-        return "film";
-    }
+  protected String getBeanName() {
+    return "film";
+  }
 
-    public void testNormalString() throws Exception
-    {
-        prepareContent("foobar                        ");
-        Film film = (Film) getNextBean();
-        assertNotNull(film);
-        assertEquals("foobar", film.getTitle());
-    }
+  public void testNormalString() throws Exception {
+    prepareContent("foobar                        ");
+    Film film = (Film) getNextBean();
+    assertNotNull(film);
+    assertEquals("foobar", film.getTitle());
+  }
 
-    public void testSpecialChar() throws Exception
-    {
-        prepareContent("\u0104                             ");
-        Film film = (Film) getNextBean();
-        assertNotNull(film);
-        assertEquals("\u0104", film.getTitle());
-    }
+  public void testSpecialChar() throws Exception {
+    prepareContent("\u0104                             ");
+    Film film = (Film) getNextBean();
+    assertNotNull(film);
+    assertEquals("\u0104", film.getTitle());
+  }
 
-    private void prepareContent(String string) throws UnsupportedEncodingException, IOException, Exception
-    {
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        OutputStreamWriter sw = new OutputStreamWriter(os, "iso-8859-2");
-        sw.write(string);
-        sw.flush();
-        byte[] bytes = os.toByteArray();
-        setContent(bytes);
-    }
+  private void prepareContent(String string) throws UnsupportedEncodingException, IOException,
+      Exception {
+    ByteArrayOutputStream os = new ByteArrayOutputStream();
+    OutputStreamWriter sw = new OutputStreamWriter(os, "iso-8859-2");
+    sw.write(string);
+    sw.flush();
+    byte[] bytes = os.toByteArray();
+    setContent(bytes);
+  }
 }

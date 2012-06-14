@@ -23,128 +23,110 @@ import com.blackbear.flatworm.errors.FlatwormUnsetFieldValueException;
  * Bean class used to store the values from the Record-Element XML tag
  */
 
-class RecordElement implements LineElement
-{
+class RecordElement implements LineElement {
 
-    private Integer fieldEnd;
+  private Integer fieldEnd;
 
-    private Integer fieldStart;
+  private Integer fieldStart;
 
-    private Integer fieldLength;
+  private Integer fieldLength;
 
-    private Integer spacerLength;
+  private Integer spacerLength;
 
-    private char fieldType;
+  private char fieldType;
 
-    private String beanRef;
+  private String beanRef;
 
-    private String type;
+  private String type;
 
-    private Map<String, ConversionOption> conversionOptions;
+  private Map<String, ConversionOption> conversionOptions;
 
-    public RecordElement()
-    {
-        fieldEnd = null;
-        fieldStart = null;
-        fieldLength = null;
-        spacerLength = null;
-        fieldType = '\0';
-        beanRef = null;
-        type = null;
-        conversionOptions = new HashMap<String, ConversionOption>();
-    }
+  public RecordElement() {
+    fieldEnd = null;
+    fieldStart = null;
+    fieldLength = null;
+    spacerLength = null;
+    fieldType = '\0';
+    beanRef = null;
+    type = null;
+    conversionOptions = new HashMap<String, ConversionOption>();
+  }
 
-    public boolean isFieldStartSet()
-    {
-        return fieldStart != null;
-    }
+  public boolean isFieldStartSet() {
+    return fieldStart != null;
+  }
 
-    public boolean isFieldEndSet()
-    {
-        return fieldEnd != null;
-    }
+  public boolean isFieldEndSet() {
+    return fieldEnd != null;
+  }
 
-    public boolean isFieldLengthSet()
-    {
-        return fieldLength != null;
-    }
+  public boolean isFieldLengthSet() {
+    return fieldLength != null;
+  }
 
-    public int getFieldStart() throws FlatwormUnsetFieldValueException
-    {
-        if (fieldStart == null)
-            throw new FlatwormUnsetFieldValueException("fieldStart is unset");
-        else
-            return fieldStart.intValue();
-    }
+  public int getFieldStart() throws FlatwormUnsetFieldValueException {
+    if (fieldStart == null)
+      throw new FlatwormUnsetFieldValueException("fieldStart is unset");
+    else
+      return fieldStart.intValue();
+  }
 
-    public void setFieldStart(int fieldStart)
-    {
-        this.fieldStart = new Integer(fieldStart);
-    }
+  public void setFieldStart(int fieldStart) {
+    this.fieldStart = new Integer(fieldStart);
+  }
 
-    public int getFieldEnd() throws FlatwormUnsetFieldValueException
-    {
-        if (fieldEnd == null)
-            throw new FlatwormUnsetFieldValueException("fieldEnd is unset");
-        else
-            return fieldEnd.intValue();
-    }
+  public int getFieldEnd() throws FlatwormUnsetFieldValueException {
+    if (fieldEnd == null)
+      throw new FlatwormUnsetFieldValueException("fieldEnd is unset");
+    else
+      return fieldEnd.intValue();
+  }
 
-    public void setFieldEnd(int fieldEnd)
-    {
-        this.fieldEnd = new Integer(fieldEnd);
-    }
+  public void setFieldEnd(int fieldEnd) {
+    this.fieldEnd = new Integer(fieldEnd);
+  }
 
-    public int getFieldLength() throws FlatwormUnsetFieldValueException
-    {
-        if (fieldLength == null)
-            if (!(isFieldStartSet() && isFieldEndSet()))
-                throw new FlatwormUnsetFieldValueException("length is unset");
-            else
-                // Derive length from start and end position
-                return fieldEnd.intValue() - fieldStart.intValue();
-        else
-            return fieldLength.intValue();
-    }
+  public int getFieldLength() throws FlatwormUnsetFieldValueException {
+    if (fieldLength == null)
+      if (!(isFieldStartSet() && isFieldEndSet()))
+        throw new FlatwormUnsetFieldValueException("length is unset");
+      else
+        // Derive length from start and end position
+        return fieldEnd.intValue() - fieldStart.intValue();
+    else
+      return fieldLength.intValue();
+  }
 
-    public void setFieldLength(int fieldLength)
-    {
-        this.fieldLength = new Integer(fieldLength);
-    }
+  public void setFieldLength(int fieldLength) {
+    this.fieldLength = new Integer(fieldLength);
+  }
 
-    public String getType()
-    {
-        return type;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public void setType(String type)
-    {
-        this.type = type;
-    }
+  public void setType(String type) {
+    this.type = type;
+  }
 
-    public Map<String, ConversionOption> getConversionOptions()
-    {
-        return conversionOptions;
-    }
+  public Map<String, ConversionOption> getConversionOptions() {
+    return conversionOptions;
+  }
 
-    public void setConversionOptions(Map<String, ConversionOption> conversionOptions)
-    {
-        this.conversionOptions = conversionOptions;
-    }
+  public void setConversionOptions(Map<String, ConversionOption> conversionOptions) {
+    this.conversionOptions = conversionOptions;
+  }
 
-    public void addConversionOption(String name, ConversionOption option)
-    {
-        conversionOptions.put(name, option);
-    }
+  public void addConversionOption(String name, ConversionOption option) {
+    conversionOptions.put(name, option);
+  }
 
-    public String getBeanRef()
-    {
-        return beanRef;
-    }
+  public String getBeanRef() {
+    return beanRef;
+  }
 
-    public void setBeanRef(String beanRef)
-    {
-        this.beanRef = beanRef;
-    }
+  public void setBeanRef(String beanRef) {
+    this.beanRef = beanRef;
+  }
 
 }

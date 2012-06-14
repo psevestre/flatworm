@@ -9,82 +9,73 @@ package domain;
 /**
  * @author e50633
  * 
- * To change the template for this generated type comment go to Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code
- * and Comments
+ *         To change the template for this generated type comment go to
+ *         Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
-public class Inventory
-{
+public class Inventory {
 
-    private String sku;
+  private String sku;
 
-    private double price;
+  private double price;
 
-    private int quantity;
+  private int quantity;
 
-    private String description;
+  private String description;
 
-    /**
-     * @return
-     */
-    public String getDescription()
-    {
-        return description;
-    }
+  /**
+   * @return
+   */
+  public String getDescription() {
+    return description;
+  }
 
-    /**
-     * @return
-     */
-    public double getPrice()
-    {
-        return price;
-    }
+  /**
+   * @return
+   */
+  public double getPrice() {
+    return price;
+  }
 
-    /**
-     * @return
-     */
-    public int getQuantity()
-    {
-        return quantity;
-    }
+  /**
+   * @return
+   */
+  public int getQuantity() {
+    return quantity;
+  }
 
-    /**
-     * @return
-     */
-    public String getSku()
-    {
-        return sku;
-    }
+  /**
+   * @return
+   */
+  public String getSku() {
+    return sku;
+  }
 
-    /**
-     * @param string
-     */
-    public void setDescription(String string)
-    {
-        description = string;
-    }
+  /**
+   * @param string
+   */
+  public void setDescription(String string) {
+    description = string;
+  }
 
-    /**
-     * @param d
-     */
-    public void setPrice(double d)
-    {
-        price = d;
-    }
+  /**
+   * @param d
+   */
+  public void setPrice(double d) {
+    price = d;
+  }
 
-    /**
-     * @param i
-     */
-    public void setQuantity(int i)
-    {
-        quantity = i;
-    }
+  /**
+   * @param i
+   */
+  public void setQuantity(int i) {
+    quantity = i;
+  }
 
-    /**
-     * @param string
-     */
-    public void setSku(String string)
-    {
-        sku = string;
-    }
+  /**
+   * @param string
+   */
+  public void setSku(String string) {
+    sku = string;
+  }
 
 }

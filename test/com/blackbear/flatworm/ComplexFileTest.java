@@ -29,59 +29,55 @@ import domain.Dvd;
 import domain.Film;
 import domain.Videotape;
 
-public class ComplexFileTest
-{
-    @Test
-    public void testFileRead()
-    {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        ConfigurationReader parser = new ConfigurationReader();
-        try
-        {
-            FileFormat ff = parser.loadConfigurationFile("complex-example.xml");
-            InputStream in = new FileInputStream("../test/resources/complex_input.txt");
-            BufferedReader bufIn = new BufferedReader(new InputStreamReader(in));
+public class ComplexFileTest {
+  @Test
+  public void testFileRead() {
+    SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+    ConfigurationReader parser = new ConfigurationReader();
+    try {
+      FileFormat ff = parser.loadConfigurationFile("complex-example.xml");
+      InputStream in = new FileInputStream("../test/resources/complex_input.txt");
+      BufferedReader bufIn = new BufferedReader(new InputStreamReader(in));
 
-            MatchedRecord results = ff.getNextRecord(bufIn);
-            assertEquals("dvd", results.getRecordName());
-            Dvd dvd = (Dvd)results.getBean("dvd");
-            Film film = (Film)results.getBean("film");
-            assertEquals("55512121", dvd.getSku());
-            assertEquals(49.95, dvd.getPrice(), 0.01);
-            assertEquals("Y", dvd.getDualLayer());
-            assertEquals("2004/01/15", format.format(film.getReleaseDate()));
-            assertEquals("DIAL J FOR JAVA", film.getTitle());
-            assertEquals("RUN ANYWHERE STUDIO", film.getStudio());
+      MatchedRecord results = ff.getNextRecord(bufIn);
+      assertEquals("dvd", results.getRecordName());
+      Dvd dvd = (Dvd) results.getBean("dvd");
+      Film film = (Film) results.getBean("film");
+      assertEquals("55512121", dvd.getSku());
+      assertEquals(49.95, dvd.getPrice(), 0.01);
+      assertEquals("Y", dvd.getDualLayer());
+      assertEquals("2004/01/15", format.format(film.getReleaseDate()));
+      assertEquals("DIAL J FOR JAVA", film.getTitle());
+      assertEquals("RUN ANYWHERE STUDIO", film.getStudio());
 
-            results = ff.getNextRecord(bufIn);
-            assertEquals("book", results.getRecordName());
-            Book book = (Book)results.getBean("book");
-            assertEquals("546234476", book.getSku());
-            assertEquals("HE KNOWS WHEN YOU\"RE CODING", book.getTitle());
-            assertEquals("JAVALANG OBJECT", book.getAuthor());
-            assertEquals(13.95, book.getPrice(), 0.01);
-            assertEquals("2003/11/10", format.format(book.getReleaseDate()));
-            
-            results = ff.getNextRecord(bufIn);
-            assertEquals("videotape", results.getRecordName());
-            Videotape tape = (Videotape)results.getBean("video");
-            film = (Film)results.getBean("film");
-            assertEquals("2346542", tape.getSku());
-            assertEquals(23.55, tape.getPrice(), 0.01);
-            assertEquals("2003/03/12", format.format(film.getReleaseDate()));
-            assertEquals("WHEN A STRANGER IMPLEMENTS", film.getTitle());
-            assertEquals("NULL POINTER PRODUCTIONS", film.getStudio());
-            
-            results = ff.getNextRecord(bufIn);
-            assertEquals("book", results.getRecordName());
-            
-            results = ff.getNextRecord(bufIn);
-            assertEquals("videotape", results.getRecordName());
-        } 
-        catch (Exception e)
-        {
-            fail("Caught an exception of type " + e.getClass().getSimpleName());
-        }
+      results = ff.getNextRecord(bufIn);
+      assertEquals("book", results.getRecordName());
+      Book book = (Book) results.getBean("book");
+      assertEquals("546234476", book.getSku());
+      assertEquals("HE KNOWS WHEN YOU\"RE CODING", book.getTitle());
+      assertEquals("JAVALANG OBJECT", book.getAuthor());
+      assertEquals(13.95, book.getPrice(), 0.01);
+      assertEquals("2003/11/10", format.format(book.getReleaseDate()));
+
+      results = ff.getNextRecord(bufIn);
+      assertEquals("videotape", results.getRecordName());
+      Videotape tape = (Videotape) results.getBean("video");
+      film = (Film) results.getBean("film");
+      assertEquals("2346542", tape.getSku());
+      assertEquals(23.55, tape.getPrice(), 0.01);
+      assertEquals("2003/03/12", format.format(film.getReleaseDate()));
+      assertEquals("WHEN A STRANGER IMPLEMENTS", film.getTitle());
+      assertEquals("NULL POINTER PRODUCTIONS", film.getStudio());
+
+      results = ff.getNextRecord(bufIn);
+      assertEquals("book", results.getRecordName());
+
+      results = ff.getNextRecord(bufIn);
+      assertEquals("videotape", results.getRecordName());
     }
+    catch (Exception e) {
+      fail("Caught an exception of type " + e.getClass().getSimpleName());
+    }
+  }
 
 }

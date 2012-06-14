@@ -15,15 +15,14 @@
 package com.blackbear.flatworm.errors;
 
 /**
- * The exception thrown when an error occurs during field conversion. This can either be a parsing error in the field,
- * or an invokation error against the registered method, so be sure to check both.
+ * The exception thrown when an error occurs during field conversion. This can
+ * either be a parsing error in the field, or an invokation error against the
+ * registered method, so be sure to check both.
  */
 
-public class FlatwormConversionException extends FlatwormException
-{
+public class FlatwormConversionException extends FlatwormException {
 
-    public FlatwormConversionException(String s)
-    {
-        super(s);
-    }
+  public FlatwormConversionException(String s) {
+    super(s);
+  }
 }

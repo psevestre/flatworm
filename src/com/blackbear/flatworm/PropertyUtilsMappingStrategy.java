@@ -24,42 +24,41 @@ import org.apache.commons.logging.LogFactory;
 import com.blackbear.flatworm.errors.FlatwormConversionException;
 
 /**
- * The default BeanMappingStrategy. Uses Jakarta Commons PropertyUtils to map the raw input data into the specified beans. 
+ * The default BeanMappingStrategy. Uses Jakarta Commons PropertyUtils to map
+ * the raw input data into the specified beans.
+ * 
  * @author Dave Derry
- *
+ * 
  */
-public class PropertyUtilsMappingStrategy implements BeanMappingStrategy
-{
-    private static Log log = LogFactory.getLog(PropertyUtilsMappingStrategy.class);
-    
-    public void mapBean(Object bean, String beanName, String property, Object value, Map<String, ConversionOption> conv) 
-    throws FlatwormConversionException
-    {
-        try
-        {
-            ConversionOption option = conv.get("append");
-            if (option != null && "true".equalsIgnoreCase(option.getValue()))
-            {
-                Object currentValue = PropertyUtils.getProperty(bean, property);
-                if (currentValue != null)
-                    value = currentValue.toString() + value;
-            }
-            PropertyUtils.setProperty(bean, property, value);
-        } 
-        catch (IllegalAccessException e)
-        {
-            log.error("While running set property method for " + beanName + "." + property + "with value '" + value + "'", e);
-            throw new FlatwormConversionException("Setting field " + beanName + "." + property);
-        } 
-        catch (InvocationTargetException e)
-        {
-            log.error("While running set property method for " + beanName + "." + property + "with value '" + value + "'", e);
-            throw new FlatwormConversionException("Setting field " + beanName + "." + property);
-        } 
-        catch (NoSuchMethodException e)
-        {
-            log.error("While running set property method for " + beanName + "." + property + "with value '" + value + "'", e);
-            throw new FlatwormConversionException("Setting field " + beanName + "." + property);
-        }
+public class PropertyUtilsMappingStrategy implements BeanMappingStrategy {
+  private static Log log = LogFactory.getLog(PropertyUtilsMappingStrategy.class);
+
+  @Override
+  public void mapBean(Object bean, String beanName, String property, Object value,
+      Map<String, ConversionOption> conv) throws FlatwormConversionException {
+    try {
+      ConversionOption option = conv.get("append");
+      if (option != null && "true".equalsIgnoreCase(option.getValue())) {
+        Object currentValue = PropertyUtils.getProperty(bean, property);
+        if (currentValue != null)
+          value = currentValue.toString() + value;
+      }
+      PropertyUtils.setProperty(bean, property, value);
     }
+    catch (IllegalAccessException e) {
+      log.error("While running set property method for " + beanName + "." + property
+          + "with value '" + value + "'", e);
+      throw new FlatwormConversionException("Setting field " + beanName + "." + property);
+    }
+    catch (InvocationTargetException e) {
+      log.error("While running set property method for " + beanName + "." + property
+          + "with value '" + value + "'", e);
+      throw new FlatwormConversionException("Setting field " + beanName + "." + property);
+    }
+    catch (NoSuchMethodException e) {
+      log.error("While running set property method for " + beanName + "." + property
+          + "with value '" + value + "'", e);
+      throw new FlatwormConversionException("Setting field " + beanName + "." + property);
+    }
+  }
 }

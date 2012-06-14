@@ -17,37 +17,31 @@ package com.blackbear.flatworm;
 /**
  * Bean class used to store the values from the Conversion-Option XML tag
  */
-public class ConversionOption
-{
+public class ConversionOption {
 
-    private String name;
+  private String name;
 
-    private String value;
+  private String value;
 
-    ConversionOption(String name, String value)
-    {
-        this.name = name;
-        this.value = value;
-    }
+  ConversionOption(String name, String value) {
+    this.name = name;
+    this.value = value;
+  }
 
-    public String getName()
-    {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getValue()
-    {
-        return value;
-    }
+  public String getValue() {
+    return value;
+  }
 
-    public void setName(String string)
-    {
-        name = string;
-    }
+  public void setName(String string) {
+    name = string;
+  }
 
-    public void setValue(String string)
-    {
-        value = string;
-    }
+  public void setValue(String string) {
+    value = string;
+  }
 
 }

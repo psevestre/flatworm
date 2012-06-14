@@ -15,61 +15,51 @@
 package com.blackbear.flatworm;
 
 /**
- * Bean class used to represent information about a Converter. That is, a method from CoreConverters or one you
- * implement.
+ * Bean class used to represent information about a Converter. That is, a method
+ * from CoreConverters or one you implement.
  */
-class Converter
-{
-    private String converterClass;
+class Converter {
+  private String converterClass;
 
-    private String name;
+  private String name;
 
-    private String returnType;
+  private String returnType;
 
-    private String method;
+  private String method;
 
-    public Converter()
-    {
-    }
+  public Converter() {
+  }
 
-    public String getConverterClass()
-    {
-        return converterClass;
-    }
+  public String getConverterClass() {
+    return converterClass;
+  }
 
-    public void setConverterClass(String converterClass)
-    {
-        this.converterClass = converterClass;
-    }
+  public void setConverterClass(String converterClass) {
+    this.converterClass = converterClass;
+  }
 
-    public String getName()
-    {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getReturnType()
-    {
-        return returnType;
-    }
+  public String getReturnType() {
+    return returnType;
+  }
 
-    public void setReturnType(String returnType)
-    {
-        this.returnType = returnType;
-    }
+  public void setReturnType(String returnType) {
+    this.returnType = returnType;
+  }
 
-    public String getMethod()
-    {
-        return method;
-    }
+  public String getMethod() {
+    return method;
+  }
 
-    public void setMethod(String method)
-    {
-        this.method = method;
-    }
+  public void setMethod(String method) {
+    this.method = method;
+  }
 
 }

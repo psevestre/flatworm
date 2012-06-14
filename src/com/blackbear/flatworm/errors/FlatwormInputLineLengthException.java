@@ -15,14 +15,13 @@
 package com.blackbear.flatworm.errors;
 
 /**
- * The exception thrown when an attempt is made to read past the end of an input line.
+ * The exception thrown when an attempt is made to read past the end of an input
+ * line.
  */
 
-public class FlatwormInputLineLengthException extends FlatwormException
-{
+public class FlatwormInputLineLengthException extends FlatwormException {
 
-    public FlatwormInputLineLengthException(String s)
-    {
-        super(s);
-    }
+  public FlatwormInputLineLengthException(String s) {
+    super(s);
+  }
 }

@@ -20,30 +20,27 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-public class UtilTest 
-{
-    @Test
-    public void testRemoveBlanks()
-    {
-        HashMap options = new HashMap();
-        assertEquals("foo", Util.justify("foo  ", "both", options, 0));
-        assertEquals("foo", Util.justify("foo ", "both", options, 0));
-        assertEquals("foo", Util.justify(" foo", "both", options, 0));
-        assertEquals("foo", Util.justify("  foo", "both", options, 0));
-        assertEquals("  foo", Util.justify("  foo  ", "left", options, 0));
-        assertEquals("foo  ", Util.justify("  foo  ", "right", options, 0));
-    }
+public class UtilTest {
+  @Test
+  public void testRemoveBlanks() {
+    HashMap options = new HashMap();
+    assertEquals("foo", Util.justify("foo  ", "both", options, 0));
+    assertEquals("foo", Util.justify("foo ", "both", options, 0));
+    assertEquals("foo", Util.justify(" foo", "both", options, 0));
+    assertEquals("foo", Util.justify("  foo", "both", options, 0));
+    assertEquals("  foo", Util.justify("  foo  ", "left", options, 0));
+    assertEquals("foo  ", Util.justify("  foo  ", "right", options, 0));
+  }
 
-    @Test
-    public void testMultiplePadCharacters()
-    {
-        HashMap options = new HashMap();
-        options.put("pad-character", new ConversionOption("pad-character", "0Oo"));
-        assertEquals("f", Util.justify("foo", "both", options, 0));
-        assertEquals("f", Util.justify("fooOO00", "both", options, 0));
-        assertEquals("f", Util.justify("oofoo", "both", options, 0));
-        assertEquals("f", Util.justify("oo00OOfooOO00", "both", options, 0));
-        assertEquals("oof", Util.justify("oofoo", "left", options, 0));
-        assertEquals("foo", Util.justify("oofoo", "right", options, 0));
-    }
+  @Test
+  public void testMultiplePadCharacters() {
+    HashMap options = new HashMap();
+    options.put("pad-character", new ConversionOption("pad-character", "0Oo"));
+    assertEquals("f", Util.justify("foo", "both", options, 0));
+    assertEquals("f", Util.justify("fooOO00", "both", options, 0));
+    assertEquals("f", Util.justify("oofoo", "both", options, 0));
+    assertEquals("f", Util.justify("oo00OOfooOO00", "both", options, 0));
+    assertEquals("oof", Util.justify("oofoo", "left", options, 0));
+    assertEquals("foo", Util.justify("oofoo", "right", options, 0));
+  }
 }

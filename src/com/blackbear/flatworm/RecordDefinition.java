@@ -23,55 +23,46 @@ import java.util.Map;
  * Bean class used to store the values from the Record-Definition XML tag
  */
 
-class RecordDefinition extends Object
-{
-    private Map<String, Bean> beansUsed;
-    private List<Line> lines;
+class RecordDefinition extends Object {
+  private Map<String, Bean> beansUsed;
+  private List<Line> lines;
 
-    public RecordDefinition()
-    {
-        this.beansUsed = new HashMap<String, Bean>();
-        this.lines = new ArrayList<Line>();
-    }
+  public RecordDefinition() {
+    this.beansUsed = new HashMap<String, Bean>();
+    this.lines = new ArrayList<Line>();
+  }
 
-    public Map<String, Bean> getBeansUsed()
-    {
-        return this.beansUsed;
-    }
+  public Map<String, Bean> getBeansUsed() {
+    return this.beansUsed;
+  }
 
-    public void setBeansUsed(Map<String, Bean> beansUsed)
-    {
-        this.beansUsed = beansUsed;
-    }
+  public void setBeansUsed(Map<String, Bean> beansUsed) {
+    this.beansUsed = beansUsed;
+  }
 
-    public void addBeanUsed(Bean bean)
-    {
-        this.beansUsed.put(bean.getBeanName(), bean);
-    }
+  public void addBeanUsed(Bean bean) {
+    this.beansUsed.put(bean.getBeanName(), bean);
+  }
 
-    public List<Line> getLines()
-    {
-        return this.lines;
-    }
+  public List<Line> getLines() {
+    return this.lines;
+  }
 
-    public void setLines(List<Line> lines)
-    {
-        this.lines = lines;
-    }
+  public void setLines(List<Line> lines) {
+    this.lines = lines;
+  }
 
-    public void addLine(Line line)
-    {
-        lines.add(line);
-    }
+  public void addLine(Line line) {
+    lines.add(line);
+  }
 
-    public String toString()
-    {
-        StringBuffer b = new StringBuffer();
-        b.append(super.toString() + "[");
-        b.append("beans = " + beansUsed);
-        b.append(",lines=" + lines);
-        b.append("]");
-        return b.toString();
-    }
+  public String toString() {
+    StringBuffer b = new StringBuffer();
+    b.append(super.toString() + "[");
+    b.append("beans = " + beansUsed);
+    b.append(",lines=" + lines);
+    b.append("]");
+    return b.toString();
+  }
 
 }

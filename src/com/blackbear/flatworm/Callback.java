@@ -17,28 +17,25 @@ package com.blackbear.flatworm;
 import java.lang.reflect.Method;
 
 /**
- * Used primarily by FileParser to store information about object and methods used to hadle parse events.
+ * Used primarily by FileParser to store information about object and methods
+ * used to hadle parse events.
  */
-public class Callback
-{
-    private Object instance;
+public class Callback {
+  private Object instance;
 
-    private Method method;
+  private Method method;
 
-    public Callback(Object instance, Method method)
-    {
-        this.instance = instance;
-        this.method = method;
-    }
+  public Callback(Object instance, Method method) {
+    this.instance = instance;
+    this.method = method;
+  }
 
-    public Object getInstance()
-    {
-        return instance;
-    }
+  public Object getInstance() {
+    return instance;
+  }
 
-    public Method getMethod()
-    {
-        return method;
-    }
+  public Method getMethod() {
+    return method;
+  }
 
 }

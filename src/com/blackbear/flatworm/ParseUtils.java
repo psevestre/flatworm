@@ -18,34 +18,27 @@ import java.lang.reflect.Method;
 
 import com.blackbear.flatworm.errors.FlatwormCreatorException;
 
-public class ParseUtils
-{
-    public static Object newBeanInstance(Object beanType) 
-    throws FlatwormCreatorException
-    {
-        try
-        {
-            return beanType.getClass().newInstance();
-        } 
-        catch(Exception e)
-        {
-            throw new FlatwormCreatorException("Unable to create new instance of bean '" + beanType.getClass() + "'", e);
-        }
+public class ParseUtils {
+  public static Object newBeanInstance(Object beanType) throws FlatwormCreatorException {
+    try {
+      return beanType.getClass().newInstance();
     }
-    
-    public static void invokeAddMethod(Object target, String methodName, Object toAdd) 
-    throws FlatwormCreatorException
-    {
-        try
-        {
-            Method method = target.getClass().getMethod(methodName, toAdd.getClass());
-            method.invoke(target, toAdd);
-        }
-        catch(Exception e)
-        {
-            throw new FlatwormCreatorException(String.format("Unable to invoke add method %s on bean %s with object of type %s", 
-                                                             methodName, target.getClass().getSimpleName(), toAdd.getClass().getSimpleName()), 
-                                               e);
-        }
+    catch (Exception e) {
+      throw new FlatwormCreatorException("Unable to create new instance of bean '"
+          + beanType.getClass() + "'", e);
     }
+  }
+
+  public static void invokeAddMethod(Object target, String methodName, Object toAdd)
+      throws FlatwormCreatorException {
+    try {
+      Method method = target.getClass().getMethod(methodName, toAdd.getClass());
+      method.invoke(target, toAdd);
+    }
+    catch (Exception e) {
+      throw new FlatwormCreatorException(String.format(
+          "Unable to invoke add method %s on bean %s with object of type %s", methodName, target
+              .getClass().getSimpleName(), toAdd.getClass().getSimpleName()), e);
+    }
+  }
 }

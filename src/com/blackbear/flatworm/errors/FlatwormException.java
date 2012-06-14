@@ -18,21 +18,17 @@ package com.blackbear.flatworm.errors;
  * The base exception for all Flatworm exceptions.
  */
 
-public class FlatwormException extends Exception
-{
-    private static final long serialVersionUID = 7458005788127155709L;
+public class FlatwormException extends Exception {
+  private static final long serialVersionUID = 7458005788127155709L;
 
-    public FlatwormException()
-    {
-    }
+  public FlatwormException() {
+  }
 
-    public FlatwormException(String s)
-    {
-        super(s);
-    }
+  public FlatwormException(String s) {
+    super(s);
+  }
 
-    public FlatwormException(String s, Exception e)
-    {
-        super(s, e);
-    }
+  public FlatwormException(String s, Exception e) {
+    super(s, e);
+  }
 }

@@ -15,19 +15,17 @@
 package com.blackbear.flatworm.errors;
 
 /**
- * The exception thrown when a value is missing or inconsistant values are given in the configuation file.
+ * The exception thrown when a value is missing or inconsistant values are given
+ * in the configuation file.
  */
 
-public class FlatwormCreatorException extends FlatwormException
-{
+public class FlatwormCreatorException extends FlatwormException {
 
-    public FlatwormCreatorException(String s)
-    {
-        super(s);
-    }
+  public FlatwormCreatorException(String s) {
+    super(s);
+  }
 
-    public FlatwormCreatorException(String s, Exception e)
-    {
-        super(s, e);
-    }
+  public FlatwormCreatorException(String s, Exception e) {
+    super(s, e);
+  }
 }

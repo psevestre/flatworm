@@ -27,61 +27,53 @@ import org.junit.Test;
 import com.blackbear.flatworm.errors.FlatwormConfigurationValueException;
 import com.blackbear.flatworm.errors.FlatwormUnsetFieldValueException;
 
-public class ConfigurationReaderTest
-{
-    private FileFormat format;
+public class ConfigurationReaderTest {
+  private FileFormat format;
 
-    public void loadFileFormat(String configFile)
-    {
-        ConfigurationReader reader = new ConfigurationReader();
-        try
-        {
-            format = reader.loadConfigurationFile(configFile);
-        }
-        catch (FlatwormUnsetFieldValueException e)
-        {
-            fail("Got a FlatwormUnsetFieldValueException - " + e);
-        }
-        catch (FlatwormConfigurationValueException e)
-        {
-            fail("Got a FlatwormConfigurationValueException - " + e);
-        }
+  public void loadFileFormat(String configFile) {
+    ConfigurationReader reader = new ConfigurationReader();
+    try {
+      format = reader.loadConfigurationFile(configFile);
     }
-    
-    @Test
-    public void testComplexRecordsRead()
-    {
-        loadFileFormat("complex-example.xml");
-        assertNotNull(format);
-        Record record = format.getRecord("dvd");
-        assertNotNull(record);
-        assertDvdRecord(record);
-        assertNotNull(format.getRecord("videotape"));
-        assertNotNull(format.getRecord("book"));
-        assertNull(format.getRecord("cd"));
+    catch (FlatwormUnsetFieldValueException e) {
+      fail("Got a FlatwormUnsetFieldValueException - " + e);
     }
-    
-    @Test
-    public void testSegmentRecordsRead()
-    {
-        loadFileFormat("segment-example.xml");
-        assertNotNull(format);
+    catch (FlatwormConfigurationValueException e) {
+      fail("Got a FlatwormConfigurationValueException - " + e);
     }
-    
-    private void assertDvdRecord(Record dvd)
-    {
-        assertEquals('L', dvd.getIdentTypeFlag());
-        assertEquals(85, dvd.getLengthIdentMin());
-        assertEquals(85, dvd.getLengthIdentMax());
-        RecordDefinition def = dvd.getRecordDefinition();
-        assertNotNull(def);
-        Map<String, Bean> beans = def.getBeansUsed();
-        assertEquals(2, beans.size());
-        assertNotNull(beans.get("dvd"));
-        assertNotNull(beans.get("film"));
-        List<Line> lines = def.getLines();
-        assertEquals(1, lines.size());
-        Line line = lines.get(0);
-        assertEquals(6, line.getElements().size());
-    }
+  }
+
+  @Test
+  public void testComplexRecordsRead() {
+    loadFileFormat("complex-example.xml");
+    assertNotNull(format);
+    Record record = format.getRecord("dvd");
+    assertNotNull(record);
+    assertDvdRecord(record);
+    assertNotNull(format.getRecord("videotape"));
+    assertNotNull(format.getRecord("book"));
+    assertNull(format.getRecord("cd"));
+  }
+
+  @Test
+  public void testSegmentRecordsRead() {
+    loadFileFormat("segment-example.xml");
+    assertNotNull(format);
+  }
+
+  private void assertDvdRecord(Record dvd) {
+    assertEquals('L', dvd.getIdentTypeFlag());
+    assertEquals(85, dvd.getLengthIdentMin());
+    assertEquals(85, dvd.getLengthIdentMax());
+    RecordDefinition def = dvd.getRecordDefinition();
+    assertNotNull(def);
+    Map<String, Bean> beans = def.getBeansUsed();
+    assertEquals(2, beans.size());
+    assertNotNull(beans.get("dvd"));
+    assertNotNull(beans.get("film"));
+    List<Line> lines = def.getLines();
+    assertEquals(1, lines.size());
+    Line line = lines.get(0);
+    assertEquals(6, line.getElements().size());
+  }
 }

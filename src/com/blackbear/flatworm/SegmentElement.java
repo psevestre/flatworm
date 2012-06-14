@@ -18,148 +18,121 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class SegmentElement implements LineElement
-{
-    private int fieldIdentStart = 0;
-    private int fieldIdentLength = 0;
-    private List<String> fieldIdentMatchStrings = new ArrayList<String>();
-    private int minCount;
-    private int maxCount;
-    private String name;
-    private String beanRef;
-    private String parentBeanRef;
-    private String addMethod;
-    private CardinalityMode cardinalityMode;
-    private List<LineElement> elements = new ArrayList<LineElement>();
+class SegmentElement implements LineElement {
+  private int fieldIdentStart = 0;
+  private int fieldIdentLength = 0;
+  private List<String> fieldIdentMatchStrings = new ArrayList<String>();
+  private int minCount;
+  private int maxCount;
+  private String name;
+  private String beanRef;
+  private String parentBeanRef;
+  private String addMethod;
+  private CardinalityMode cardinalityMode;
+  private List<LineElement> elements = new ArrayList<LineElement>();
 
-    public int getFieldIdentStart()
-    {
-        return fieldIdentStart;
-    }
+  public int getFieldIdentStart() {
+    return fieldIdentStart;
+  }
 
-    public void setFieldIdentStart(int fieldIdentStart)
-    {
-        this.fieldIdentStart = fieldIdentStart;
-    }
+  public void setFieldIdentStart(int fieldIdentStart) {
+    this.fieldIdentStart = fieldIdentStart;
+  }
 
-    public int getFieldIdentLength()
-    {
-        return fieldIdentLength;
-    }
+  public int getFieldIdentLength() {
+    return fieldIdentLength;
+  }
 
-    public void setFieldIdentLength(int fieldIdentLength)
-    {
-        this.fieldIdentLength = fieldIdentLength;
-    }
+  public void setFieldIdentLength(int fieldIdentLength) {
+    this.fieldIdentLength = fieldIdentLength;
+  }
 
-    public List<String> getFieldIdentMatchStrings()
-    {
-        return fieldIdentMatchStrings ;
-    }
+  public List<String> getFieldIdentMatchStrings() {
+    return fieldIdentMatchStrings;
+  }
 
-    public void setFieldIdentMatchStrings(List<String> fieldIdentMatchStrings)
-    {
-        this.fieldIdentMatchStrings = fieldIdentMatchStrings;
-    }
+  public void setFieldIdentMatchStrings(List<String> fieldIdentMatchStrings) {
+    this.fieldIdentMatchStrings = fieldIdentMatchStrings;
+  }
 
-    public void addFieldIdentMatchString(String s)
-    {
-        fieldIdentMatchStrings.add(s);
-    }
-    
-    public boolean matchesId(String id)
-    {
-        return fieldIdentMatchStrings.contains(id);
-    }
+  public void addFieldIdentMatchString(String s) {
+    fieldIdentMatchStrings.add(s);
+  }
 
-    public char getIdentTypeFlag()
-    {
-        return 'F';
-    }
+  public boolean matchesId(String id) {
+    return fieldIdentMatchStrings.contains(id);
+  }
 
-    public int getMinCount()
-    {
-        return minCount;
-    }
+  public char getIdentTypeFlag() {
+    return 'F';
+  }
 
-    public void setMinCount(int minCount)
-    {
-        this.minCount = minCount;
-    }
+  public int getMinCount() {
+    return minCount;
+  }
 
-    public int getMaxCount()
-    {
-        return maxCount;
-    }
+  public void setMinCount(int minCount) {
+    this.minCount = minCount;
+  }
 
-    public void setMaxCount(int maxCount)
-    {
-        this.maxCount = maxCount;
-    }
+  public int getMaxCount() {
+    return maxCount;
+  }
 
-    public String getName()
-    {
-        return name;
-    }
+  public void setMaxCount(int maxCount) {
+    this.maxCount = maxCount;
+  }
 
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getBeanRef()
-    {
-        return beanRef;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setBeanRef(String beanRef)
-    {
-        this.beanRef = beanRef;
-    }
+  public String getBeanRef() {
+    return beanRef;
+  }
 
-    public String getParentBeanRef()
-    {
-        return parentBeanRef;
-    }
+  public void setBeanRef(String beanRef) {
+    this.beanRef = beanRef;
+  }
 
-    public void setParentBeanRef(String parentBeanRef)
-    {
-        this.parentBeanRef = parentBeanRef;
-    }
+  public String getParentBeanRef() {
+    return parentBeanRef;
+  }
 
-    public String getAddMethod()
-    {
-        return addMethod;
-    }
+  public void setParentBeanRef(String parentBeanRef) {
+    this.parentBeanRef = parentBeanRef;
+  }
 
-    public void setAddMethod(String addMethod)
-    {
-        this.addMethod = addMethod;
-    }
+  public String getAddMethod() {
+    return addMethod;
+  }
 
-    public CardinalityMode getCardinalityMode()
-    {
-        return cardinalityMode;
-    }
+  public void setAddMethod(String addMethod) {
+    this.addMethod = addMethod;
+  }
 
-    public void setCardinalityMode(CardinalityMode cardinalityMode)
-    {
-        this.cardinalityMode = cardinalityMode;
-    }
+  public CardinalityMode getCardinalityMode() {
+    return cardinalityMode;
+  }
 
-    public List<LineElement> getElements()
-    {
-        return Collections.unmodifiableList(elements);
-    }
+  public void setCardinalityMode(CardinalityMode cardinalityMode) {
+    this.cardinalityMode = cardinalityMode;
+  }
 
-    public void setElements(List<LineElement> recordElements)
-    {
-        this.elements.clear();
-        this.elements.addAll(recordElements);
-    }
+  public List<LineElement> getElements() {
+    return Collections.unmodifiableList(elements);
+  }
 
-    public void addElement(LineElement re)
-    {
-        elements.add(re);
-    }
+  public void setElements(List<LineElement> recordElements) {
+    this.elements.clear();
+    this.elements.addAll(recordElements);
+  }
+
+  public void addElement(LineElement re) {
+    elements.add(re);
+  }
 }
